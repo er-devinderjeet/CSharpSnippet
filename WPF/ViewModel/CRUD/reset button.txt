@@ -1,0 +1,41 @@
+//in .xaml
+<dxmvvm:Interaction.Behaviors>
+    <dx:DXMessageBoxService />
+</dxmvvm:Interaction.Behaviors>
+-------------------------------------------------------------------------------------------
+// in shareview.xaml
+//add button
+<dxb:ToolBarControl VerticalAlignment="Stretch">
+            <dxb:BarButtonItem Command="{Binding ResetNameCommand}" Content="Reset" />
+        </dxb:ToolBarControl>
+
+//--------------------------------------------------------------------------------------------------------
+// Methods
+// Check Whether propties are set / not, if set then move to ResetPamater() function to reset 
+public bool CanResetName(){
+	return Share != null && !String.IsNullOrEmpty(Share.Name);
+}
+--------------------------------------------------------------------------------
+public void ResetParameter(){
+	if (Share != null){
+
+		//Service Property
+		if(MessageBoxService.ShowMessage("Are You Sure You want To reset Name Value?",
+										"Question",
+										MessageButton.YesNo,
+										MessageIcon.Question
+										MessageResult.No) == MessageResult.Yes)
+
+
+		Share.Name = "";
+	}
+
+}
+//-----------------------------------------------------------------------------------------------------------------------
+// Service Property To be created
+
+[ServiceProperty(SearchMode = ServiceSearchMode.PreferParents)]
+
+protected virtual IMessageBoxService MessageBoxService { get { return null; }}
+OR         
+protected virtual IMessageBoxService MessageBoxService => null;

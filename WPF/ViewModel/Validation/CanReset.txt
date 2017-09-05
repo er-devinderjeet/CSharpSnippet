@@ -1,0 +1,3 @@
+public bool CanResetName(){
+	return Share != null && !String.IsNullOrEmpty(Share.Name);
+}

@@ -1,0 +1,86 @@
+Mechanism for communication b/w OBJECTS
+
+EVENT SENDER/PUBLISHER
+
+
+
+
+
+EVENT RECIEVER/SUBSCRIBER
+
+
+
+
+
+
+//Delegates
+public delegate void VideoEncoderDelegate(object source, EventArgs args);
+//Define Event
+public event (delegate_name) parameter_name;
+public event VideoEncoderEventHandler VideoEncoded;
+// raise Event
+//EventHandler
+public void OnVideoEncode(object source, EventsArgs e){
+	
+}
+public void OnPropetyChange(object source, EventsArgs e){
+	
+}
+
+public void OnPropetyChange(string source, PropertyChangedEventsArgs e){
+	
+}
+
+
+
+//exmple
+//Video.cs
+public class Video{
+	public string Title{get;set;}
+}
+//VideoEncoder.cs
+using System;
+using System.Threading;
+// Define Delegate
+public delegate void VideoEncoderEventHandler(object source, EventArgs Args);
+public event VideoEncoderEventHandler VideoEncoded;
+
+public class VideoEncoder{
+	public void Encode(Video video){
+		Console.WriteLine("Encoding Video....");
+		Thread.sleep(2000);
+		OnPropetyChange();
+	}
+protected virtual void OnPropetyChange(object source, EventsArgs e)
+	{
+		if (VideoEncoded != null)
+		{
+			VideoEncoded(this,EventArgs.Empty);
+			//this - what is source of event? or who is publising event?
+			//curent class 
+		}
+	}
+}
+
+//Program.cs
+class Program{
+	static void Main(string[] args)
+	{
+		Video(or var) video = new Video();
+		VideoEncoder videoEncoder = new VideoEncoder();
+		var mailService = new MailService() //subscriber
+
+		//instance Eventhandler object
+		videoencoder.VideoEncoded += mailservice.OnPropertyChange;
+		videoEncoder.Encode(video);
+
+	}
+}
+public class MailService()
+{
+	//Event handler
+	public void OnPropetyChange(object source, EventsArgs e){
+		Console.WriteLine("Mail sent");
+	}
+
+}

@@ -1,0 +1,4 @@
+// in .XAML
+<BUTTON Content="Button" Height="23" HorizontalAligment="Left" Margin=" Name="button1" VerticalAligment="Top" />
+
+//

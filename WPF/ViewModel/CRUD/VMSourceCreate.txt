@@ -1,0 +1,4 @@
+using DevExpress.Mvvm.POCO;
+public static ShareViewModel Create(){
+	return ViewModelSource.Create(() => new ShareViewModel());
+}

@@ -1,0 +1,25 @@
+// in .XAML
+<dxmvvm:Interaction.Behaviors>
+    <dx:DXMessageBoxService />
+</dxmvvm:Interaction.Behaviors>
+
+//Service Property
+if(MessageBoxService.ShowMessage("Are You Sure You want To reset Name Value?",
+								"Question",
+								MessageButton.YesNo,
+								MessageIcon.Question
+								MessageResult.No) == MessageResult.Yes)
+
+
+
+[ServiceProperty(SearchMode = ServiceSearchMode.PreferParents)]
+
+protected virtual IMessageBoxService MessageBoxService { get { return null; }}
+OR
+protected virtual IMessageBoxService MessageBoxService => null;
+
+// in view.xaml
+
+<dxmvvm:Intaractive.Behaviors>
+	<dx:DXMessageBoxService />
+</dxmvvm:Intractive.Behaviors>
