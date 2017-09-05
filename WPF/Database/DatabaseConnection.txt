@@ -1,0 +1,14 @@
+string ConnectionStrings = "server=localhost;database=customers;user=root;password=;";
+string connStr = "server=localhost;user=root;database=sakila;port=3306;password=;";
+var ConnectionStrings = "Server=localhost;Uid=root;database=customers";
+
+MySqlConnection conn = new MySqlConnection(connectionString);
+try{
+   conn.Open();
+ }
+catch (MySqlException ex){
+   MessageBox.Show(ex.ToString());
+}
+finally{
+	conn.Close();
+}

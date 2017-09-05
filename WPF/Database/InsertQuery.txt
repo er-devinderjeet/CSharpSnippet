@@ -1,0 +1,9 @@
+string connString = "Server=localhost;Database=;Uid=root";
+MySqlConnection mcon = new MySqlConnection(connString);
+mcon.Open();
+
+string cmdText = "INSERT INTO FTS VALUES (null, @name, @surname)";
+MySqlCommand cmd = new MySqlCommand(cmdText, mcon);
+cmd.Parameters.Add("@name", txtname.Text);
+cmd.Parameters.Add("@surname", txtsurname.Text);
+cmd.ExecuteNonQuery();
